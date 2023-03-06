@@ -1,0 +1,45 @@
+<table>
+    <tr>
+        <th></th>
+        <th>Game Name</th>
+        <th>100%</th>
+        <th>All Achieves</th>
+        <th>Update</th>
+    </tr>
+    <tr *ngFor="let tempGame of legoGames">
+        <td>
+            <img src="{{tempGame.imageUrl}}" style="height: auto; width: 200px;" />
+        </td>
+        <td>{{tempGame.gameName}}</td>
+        <td>
+            <div *ngIf="tempGame.hundredPercentCompletion == true">
+                <img style="width: 200px; height: 200px;" src="assets/images/greencheck.png">
+            </div>
+            <div *ngIf="tempGame.hundredPercentCompletion == false">
+                <img style="width: 200px; height: 200px;" src="assets/images/redx.png">
+            </div>
+        </td>
+        <td>
+            <div *ngIf="tempGame.allAchievements == true">
+                <img style="width: 200px; height: 200px;" src="assets/images/greencheck.png">
+            </div>
+            <div *ngIf="tempGame.allAchievements == false">
+                <img style="width: 200px; height: 200px;" src="assets/images/redx.png">
+            </div>
+        </td>
+        <td>
+            <button class="btn btn-primary btn-lg" (click)="updateGameToggler(tempGame.id)">Update</button>
+        </td>
+    </tr>
+</table>
+
+
+<div *ngIf="updateGameToggle">
+    <form (ngSubmit)="updateGame(currentGameId)">
+        <label for="hundredPercentCompletion">100% Completed?: </label><br>
+        <input type="text" id="hundredPercentCompletion" name="hundredPercentCompletion" value="{{legoGame.hundredPercentCompletion}}" [(ngModel)]="legoGame.hundredPercentCompletion"><br>
+        <label for="allAchievements">All Achievements Got?: </label><br>
+        <input type="text" id="allAchievements" name="allAchievements" value="{{legoGame.allAchievements}}" [(ngModel)]="legoGame.allAchievements">
+        <button class="btn btn-success btn-submit" type="submit">Submit</button>
+    </form>
+</div>

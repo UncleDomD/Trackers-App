@@ -1,0 +1,15 @@
+.menu-button {
+    border-radius: 50px;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:  10%;
+    position: relative;
+}
+
+img {
+    border-radius: 50px;
+}

@@ -1,0 +1,500 @@
+<!-- <pre>Active {{active}}</pre> -->
+<nav ngbNav #nav="ngbNav" [activeId]="active" class="nav-tabs">
+    <li [ngbNavItem]="0">
+        <a ngbNavLink>All Categories</a>
+        <ng-template ngbNavContent>
+
+            <table class="gunTable">
+                <tr>
+                    <th>Categories</th>
+                    <th>Diamond?</th>
+                    <th>Update</th>
+                </tr>
+                <tr *ngFor="let tempGC of gunCategories">
+                    <td>{{tempGC.categoryName}}</td>
+                    <td>
+                        <div *ngIf="tempGC.diamondCompleted == true">
+                            <img style="width: 200px; height: 200px;" src="assets/images/dark_aether/plagueDiamond.jpeg">
+                        </div>
+                        <div *ngIf="tempGC.diamondCompleted == false">
+                            <img style="width: 200px; height: 200px;" src="assets/images/lock.jpeg">
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-lg" (click)="updateGunCategoryToggler(tempGC.id)">Update</button>
+                    </td>
+                </tr>
+            </table>
+
+            <div *ngIf="updateGunCategoryToggle">
+                <form (ngSubmit)="updateGunCategory(currentGunCategoryId)">
+                    <label for="diamondCompleted">Diamond Completed?: </label><br>
+                    <input type="text" id="diamondCompleted" name="diamondCompleted" value="{{gunCategory.diamondCompleted}}" [(ngModel)]="gunCategory.diamondCompleted">
+                    <button class="btn btn-success btn-submit" type="submit">Submit</button>
+                </form>
+            </div>
+
+        </ng-template>
+    </li>
+    <li [ngbNavItem]="1">
+        <a ngbNavLink>AR's</a>
+        <ng-template ngbNavContent>
+
+            <table class="gunTable">
+                <tr>
+                    <th>Assault Rifles</th>
+                    <th>Image</th>
+                    <th>Gold?</th>
+                    <th>Max Lvl</th>
+                    <th>Update</th>
+                </tr>
+                <tr *ngFor="let tempAR of assaultRifles">
+                    <td>{{tempAR.gunName}}</td>
+                    <td>
+                        <img class="gunImage" src="{{tempAR.imageUrl}}">
+                    </td>
+                    <td>
+                        <div *ngIf="tempAR.goldCompleted == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/dark_aether/goldViper.jpeg">
+                        </div>
+                        <div *ngIf="tempAR.goldCompleted == false">
+                            <img style="width: auto; height: 200px;" src="assets/images/lock.jpeg">
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="tempAR.maxLevel == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/greencheck.png">
+                        </div>
+                        <div *ngIf="tempAR.maxLevel == false">
+                            <img style="width: 200px; height: 200px;" src="assets/images/redx.png">
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-lg" (click)="updateGunToggler(tempAR.id)">Update</button>
+                    </td>
+                </tr>
+            </table>
+
+            <div *ngIf="updateGunToggle">
+                <form (ngSubmit)="updateGun(currentGunId)">
+                    <label for="goldCompleted">Gold Completed?: </label><br>
+                    <input type="text" id="goldCompleted" name="goldCompleted" value="{{gun.goldCompleted}}" [(ngModel)]="gun.goldCompleted"><br>
+                    <label for="maxLevel">Max Level Achieved?</label><br>
+                    <input type="text" id="maxLevel" name="maxLevel" value="{{gun.maxLevel}}" [(ngModel)]="gun.maxLevel">
+                    <button class="btn btn-success btn-submit" type="submit">Submit</button>
+                </form>
+            </div>
+
+        </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+        <a ngbNavLink>SMG's</a>
+        <ng-template ngbNavContent>
+
+            <table>
+                <tr>
+                    <th>Submachine Guns</th>
+                    <th>Image</th>
+                    <th>Gold?</th>
+                    <th>Max Lvl</th>
+                    <th>Update</th>
+                </tr>
+                <tr *ngFor="let tempSMG of submachineGuns">
+                    <td>{{tempSMG.gunName}}</td>
+                    <td>
+                        <img class="gunImage" src="{{tempSMG.imageUrl}}">
+                    </td>
+                    <td>
+                        <div *ngIf="tempSMG.goldCompleted == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/dark_aether/goldViper.jpeg">
+                        </div>
+                        <div *ngIf="tempSMG.goldCompleted == false">
+                            <img style="width: auto; height: 200px;" src="assets/images/lock.jpeg">
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="tempSMG.maxLevel == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/greencheck.png">
+                        </div>
+                        <div *ngIf="tempSMG.maxLevel == false">
+                            <img style="width: 200px; height: 200px;" src="assets/images/redx.png">
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-lg" (click)="updateGunToggler(tempSMG.id)">Update</button>
+                    </td>
+                </tr>
+            </table>
+
+            <div *ngIf="updateGunToggle">
+                <form (ngSubmit)="updateGun(currentGunId)">
+                    <label for="goldCompleted">Gold Completed?: </label><br>
+                    <input type="text" id="goldCompleted" name="goldCompleted" value="{{gun.goldCompleted}}" [(ngModel)]="gun.goldCompleted"><br>
+                    <label for="maxLevel">Max Level Achieved?</label><br>
+                    <input type="text" id="maxLevel" name="maxLevel" value="{{gun.maxLevel}}" [(ngModel)]="gun.maxLevel">
+                    <button class="btn btn-success btn-submit" type="submit">Submit</button>
+                </form>
+            </div>
+
+        </ng-template>
+    </li>
+    <li [ngbNavItem]="3">
+        <a ngbNavLink>TR's</a>
+        <ng-template ngbNavContent>
+
+            <table>
+                <tr>
+                    <th>Tatical Rifles</th>
+                    <th>Image</th>
+                    <th>Gold?</th>
+                    <th>Max Lvl</th>
+                    <th>Update</th>
+                </tr>
+                <tr *ngFor="let tempTR of taticalRifles">
+                    <td>{{tempTR.gunName}}</td>
+                    <td>
+                        <img class="gunImage" src="{{tempTR.imageUrl}}">
+                    </td>
+                    <td>
+                        <div *ngIf="tempTR.goldCompleted == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/dark_aether/goldViper.jpeg">
+                        </div>
+                        <div *ngIf="tempTR.goldCompleted == false">
+                            <img style="width: auto; height: 200px;" src="assets/images/lock.jpeg">
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="tempTR.maxLevel == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/greencheck.png">
+                        </div>
+                        <div *ngIf="tempTR.maxLevel == false">
+                            <img style="width: 200px; height: 200px;" src="assets/images/redx.png">
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-lg" (click)="updateGunToggler(tempTR.id)">Update</button>
+                    </td>
+                </tr>
+            </table>
+
+            <div *ngIf="updateGunToggle">
+                <form (ngSubmit)="updateGun(currentGunId)">
+                    <label for="goldCompleted">Gold Completed?: </label><br>
+                    <input type="text" id="goldCompleted" name="goldCompleted" value="{{gun.goldCompleted}}" [(ngModel)]="gun.goldCompleted"><br>
+                    <label for="maxLevel">Max Level Achieved?</label><br>
+                    <input type="text" id="maxLevel" name="maxLevel" value="{{gun.maxLevel}}" [(ngModel)]="gun.maxLevel">
+                    <button class="btn btn-success btn-submit" type="submit">Submit</button>
+                </form>
+            </div>
+
+        </ng-template>
+    </li>
+    <li [ngbNavItem]="4">
+        <a ngbNavLink>LMG's</a>
+        <ng-template ngbNavContent>
+
+            <table>
+                <tr>
+                    <th>Lightmachine Guns</th>
+                    <th>Image</th>
+                    <th>Gold?</th>
+                    <th>Max Lvl</th>
+                    <th>Update</th>
+                </tr>
+                <tr *ngFor="let tempLMG of lightmachineGuns">
+                    <td>{{tempLMG.gunName}}</td>
+                    <td>
+                        <img class="gunImage" src="{{tempLMG.imageUrl}}">
+                    </td>
+                    <td>
+                        <div *ngIf="tempLMG.goldCompleted == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/dark_aether/goldViper.jpeg">
+                        </div>
+                        <div *ngIf="tempLMG.goldCompleted == false">
+                            <img style="width: auto; height: 200px;" src="assets/images/lock.jpeg">
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="tempLMG.maxLevel == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/greencheck.png">
+                        </div>
+                        <div *ngIf="tempLMG.maxLevel == false">
+                            <img style="width: 200px; height: 200px;" src="assets/images/redx.png">
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-lg" (click)="updateGunToggler(tempLMG.id)">Update</button>
+                    </td>
+                </tr>
+            </table>
+
+            <div *ngIf="updateGunToggle">
+                <form (ngSubmit)="updateGun(currentGunId)">
+                    <label for="goldCompleted">Gold Completed?: </label><br>
+                    <input type="text" id="goldCompleted" name="goldCompleted" value="{{gun.goldCompleted}}" [(ngModel)]="gun.goldCompleted"><br>
+                    <label for="maxLevel">Max Level Achieved?</label><br>
+                    <input type="text" id="maxLevel" name="maxLevel" value="{{gun.maxLevel}}" [(ngModel)]="gun.maxLevel">
+                    <button class="btn btn-success btn-submit" type="submit">Submit</button>
+                </form>
+            </div>
+
+        </ng-template>
+    </li>
+    <li [ngbNavItem]="5">
+        <a ngbNavLink>Sniper's</a>
+        <ng-template ngbNavContent>
+
+            <table>
+                <tr>
+                    <th>Sniper's</th>
+                    <th>Image</th>
+                    <th>Gold?</th>
+                    <th>Max Lvl</th>
+                    <th>Update</th>
+                </tr>
+                <tr *ngFor="let tempSR of sniperRifles">
+                    <td>{{tempSR.gunName}}</td>
+                    <td>
+                        <img class="gunImage" src="{{tempSR.imageUrl}}">
+                    </td>
+                    <td>
+                        <div *ngIf="tempSR.goldCompleted == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/dark_aether/goldViper.jpeg">
+                        </div>
+                        <div *ngIf="tempSR.goldCompleted == false">
+                            <img style="width: auto; height: 200px;" src="assets/images/lock.jpeg">
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="tempSR.maxLevel == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/greencheck.png">
+                        </div>
+                        <div *ngIf="tempSR.maxLevel == false">
+                            <img style="width: 200px; height: 200px;" src="assets/images/redx.png">
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-lg" (click)="updateGunToggler(tempSR.id)">Update</button>
+                    </td>
+                </tr>
+            </table>
+
+            <div *ngIf="updateGunToggle">
+                <form (ngSubmit)="updateGun(currentGunId)">
+                    <label for="goldCompleted">Gold Completed?: </label><br>
+                    <input type="text" id="goldCompleted" name="goldCompleted" value="{{gun.goldCompleted}}" [(ngModel)]="gun.goldCompleted"><br>
+                    <label for="maxLevel">Max Level Achieved?</label><br>
+                    <input type="text" id="maxLevel" name="maxLevel" value="{{gun.maxLevel}}" [(ngModel)]="gun.maxLevel">
+                    <button class="btn btn-success btn-submit" type="submit">Submit</button>
+                </form>
+            </div>
+
+        </ng-template>
+    </li>
+    <li [ngbNavItem]="6">
+        <a ngbNavLink>Pistol's</a>
+        <ng-template ngbNavContent>
+
+            <table>
+                <tr>
+                    <th>Pistol's</th>
+                    <th>Image</th>
+                    <th>Gold?</th>
+                    <th>Max Lvl</th>
+                    <th>Update</th>
+                </tr>
+                <tr *ngFor="let tempP of pistols">
+                    <td>{{tempP.gunName}}</td>
+                    <td>
+                        <img class="gunImage" src="{{tempP.imageUrl}}">
+                    </td>
+                    <td>
+                        <div *ngIf="tempP.goldCompleted == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/dark_aether/goldViper.jpeg">
+                        </div>
+                        <div *ngIf="tempP.goldCompleted == false">
+                            <img style="width: auto; height: 200px;" src="assets/images/lock.jpeg">
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="tempP.maxLevel == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/greencheck.png">
+                        </div>
+                        <div *ngIf="tempP.maxLevel == false">
+                            <img style="width: 200px; height: 200px;" src="assets/images/redx.png">
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-lg" (click)="updateGunToggler(tempP.id)">Update</button>
+                    </td>
+                </tr>
+            </table>
+
+            <div *ngIf="updateGunToggle">
+                <form (ngSubmit)="updateGun(currentGunId)">
+                    <label for="goldCompleted">Gold Completed?: </label><br>
+                    <input type="text" id="goldCompleted" name="goldCompleted" value="{{gun.goldCompleted}}" [(ngModel)]="gun.goldCompleted"><br>
+                    <label for="maxLevel">Max Level Achieved?</label><br>
+                    <input type="text" id="maxLevel" name="maxLevel" value="{{gun.maxLevel}}" [(ngModel)]="gun.maxLevel">
+                    <button class="btn btn-success btn-submit" type="submit">Submit</button>
+                </form>
+            </div>
+
+        </ng-template>
+    </li>
+    <li [ngbNavItem]="7">
+        <a ngbNavLink>Shotgun's</a>
+        <ng-template ngbNavContent>
+
+            <table>
+                <tr>
+                    <th>Shotgun's</th>
+                    <th>Image</th>
+                    <th>Gold?</th>
+                    <th>Max Lvl</th>
+                    <th>Update</th>
+                </tr>
+                <tr *ngFor="let tempSG of shotguns">
+                    <td>{{tempSG.gunName}}</td>
+                    <td>
+                        <img class="gunImage" src="{{tempSG.imageUrl}}">
+                    </td>
+                    <td>
+                        <div *ngIf="tempSG.goldCompleted == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/dark_aether/goldViper.jpeg">
+                        </div>
+                        <div *ngIf="tempSG.goldCompleted == false">
+                            <img style="width: auto; height: 200px;" src="assets/images/lock.jpeg">
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="tempSG.maxLevel == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/greencheck.png">
+                        </div>
+                        <div *ngIf="tempSG.maxLevel == false">
+                            <img style="width: 200px; height: 200px;" src="assets/images/redx.png">
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-lg" (click)="updateGunToggler(tempSG.id)">Update</button>
+                    </td>
+                </tr>
+            </table>
+
+            <div *ngIf="updateGunToggle">
+                <form (ngSubmit)="updateGun(currentGunId)">
+                    <label for="goldCompleted">Gold Completed?: </label><br>
+                    <input type="text" id="goldCompleted" name="goldCompleted" value="{{gun.goldCompleted}}" [(ngModel)]="gun.goldCompleted"><br>
+                    <label for="maxLevel">Max Level Achieved?</label><br>
+                    <input type="text" id="maxLevel" name="maxLevel" value="{{gun.maxLevel}}" [(ngModel)]="gun.maxLevel">
+                    <button class="btn btn-success btn-submit" type="submit">Submit</button>
+                </form>
+            </div>
+
+        </ng-template>
+    </li>
+    <li [ngbNavItem]="8">
+        <a ngbNavLink>Launcher's</a>
+        <ng-template ngbNavContent>
+
+            <table>
+                <tr>
+                    <th>Launcher's</th>
+                    <th>Image</th>
+                    <th>Gold?</th>
+                    <th>Max Lvl</th>
+                    <th>Update</th>
+                </tr>
+                <tr *ngFor="let tempLR of launchers">
+                    <td>{{tempLR.gunName}}</td>
+                    <td>
+                        <img class="gunImage" src="{{tempLR.imageUrl}}">
+                    </td>
+                    <td>
+                        <div *ngIf="tempLR.goldCompleted == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/dark_aether/goldViper.jpeg">
+                        </div>
+                        <div *ngIf="tempLR.goldCompleted == false">
+                            <img style="width: auto; height: 200px;" src="assets/images/lock.jpeg">
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="tempLR.maxLevel == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/greencheck.png">
+                        </div>
+                        <div *ngIf="tempLR.maxLevel == false">
+                            <img style="width: 200px; height: 200px;" src="assets/images/redx.png">
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-lg" (click)="updateGunToggler(tempLR.id)">Update</button>
+                    </td>
+                </tr>
+            </table>
+
+            <div *ngIf="updateGunToggle">
+                <form (ngSubmit)="updateGun(currentGunId)">
+                    <label for="goldCompleted">Gold Completed?: </label><br>
+                    <input type="text" id="goldCompleted" name="goldCompleted" value="{{gun.goldCompleted}}" [(ngModel)]="gun.goldCompleted"><br>
+                    <label for="maxLevel">Max Level Achieved?</label><br>
+                    <input type="text" id="maxLevel" name="maxLevel" value="{{gun.maxLevel}}" [(ngModel)]="gun.maxLevel">
+                    <button class="btn btn-success btn-submit" type="submit">Submit</button>
+                </form>
+            </div>
+
+        </ng-template>
+    </li>
+    <li [ngbNavItem]="9">
+        <a ngbNavLink>Melee/Special</a>
+        <ng-template ngbNavContent>
+
+            <table>
+                <tr>
+                    <th>Melee/Special</th>
+                    <th>Image</th>
+                    <th>Gold?</th>
+                    <th>Max Lvl</th>
+                    <th>Update</th>
+                </tr>
+                <tr *ngFor="let tempMS of meleeSpecial">
+                    <td>{{tempMS.gunName}}</td>
+                    <td>
+                        <img class="gunImage" src="{{tempMS.imageUrl}}">
+                    </td>
+                    <td>
+                        <div *ngIf="tempMS.goldCompleted == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/dark_aether/goldViper.jpeg">
+                        </div>
+                        <div *ngIf="tempMS.goldCompleted == false">
+                            <img style="width: auto; height: 200px;" src="assets/images/lock.jpeg">
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="tempMS.maxLevel == true">
+                            <img style="width: auto; height: 200px;" src="assets/images/greencheck.png">
+                        </div>
+                        <div *ngIf="tempMS.maxLevel == false">
+                            <img style="width: 200px; height: 200px;" src="assets/images/redx.png">
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-lg" (click)="updateGunToggler(tempMS.id)">Update</button>
+                    </td>
+                </tr>
+            </table>
+
+            <div *ngIf="updateGunToggle">
+                <form (ngSubmit)="updateGun(currentGunId)">
+                    <label for="goldCompleted">Gold Completed?: </label><br>
+                    <input type="text" id="goldCompleted" name="goldCompleted" value="{{gun.goldCompleted}}" [(ngModel)]="gun.goldCompleted"><br>
+                    <label for="maxLevel">Max Level Achieved?</label><br>
+                    <input type="text" id="maxLevel" name="maxLevel" value="{{gun.maxLevel}}" [(ngModel)]="gun.maxLevel">
+                    <button class="btn btn-success btn-submit" type="submit">Submit</button>
+                </form>
+            </div>
+
+        </ng-template>
+    </li>
+</nav>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
