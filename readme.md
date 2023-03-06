@@ -1,10 +1,8 @@
-## HOWDY GAMERS
+# HOWDY GAMERS
 
-## --------------------------------
+## This is a custom built progress tracker for the
+## `Call of Duty: Black Ops- Cold War Zombies Dark Aether Camo Grind`
 
-# This is a custom built progress tracker for the
-# `Call of Duty: Black Ops- Cold War Zombies Dark Aether Camo Grind`
+## AND
 
-# AND
-
-# `LEGO Games I've 100%'ed`
+## `LEGO Games I've 100%'ed`
